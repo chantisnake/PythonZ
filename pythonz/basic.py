@@ -91,9 +91,9 @@ def curry(f: Callable[[A1, A2, A3, A4, A5, A6], R]) -> PZFunc[A1, PZFunc[
 
 
 def curry(f: Callable) -> PZFunc:
-    """To curry a function, only support less than 7 parameters
+    """To curry a function, type system only support less than 7 parameters
 
     :param f: the normal un-curried python function
     :return: A curried PythonZ function
     """
-    return PZFunc(lambda x, *args: f(x, *args))
+    return PZFunc(lambda x: curry(lambda *args: f(x, *args)))
