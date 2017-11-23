@@ -15,13 +15,21 @@ class PZFunc(Generic[A, B]):
         """
         self._f = f
 
-    def __call__(self, a: A) -> B:
+    def __call__(self, value: A) -> B:
         """Used to call a PythonZ function
 
-        :param a: the input
+        :param value: the input
         :return: the result
         """
-        return self._f(a)
+        return self._f(value)
+
+    def __mod__(self, value: A) -> B:
+        """Apply current function to value, same as haskell's '$'
+
+        :param value: the value to apply to
+        :return: the result of the application
+        """
+        return self._f(value)
 
     def __mul__(self, other: 'PZFunc[C, A]') -> 'PZFunc[C, B]':
         """Function composition with PythonZ function, same as haskell's '.'
@@ -31,14 +39,6 @@ class PZFunc(Generic[A, B]):
                  or the function on the right)
         """
         return PZFunc(lambda x: self(other(x)))
-
-    def __mod__(self, value: A) -> B:
-        """Apply current function to value, same as haskell's '$'
-
-        :param value: the value to apply to
-        :return: the result of the application
-        """
-        return self._f(value)
 
 
 A1 = TypeVar('A1')
