@@ -10,7 +10,7 @@ class PZFunc(Generic[A, B]):
         """This is a PythonZ function (a wrapper around normal python function)
 
         This function is a typical definition of a function in functional
-        programing, you can only take one parameter and
+        programing, you can only take one parameter and return one parameter
         :param f: the real function to use
         """
         self._f = f
