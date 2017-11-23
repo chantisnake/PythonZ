@@ -38,7 +38,7 @@ class PZFunc(Generic[A, B]):
         :param value: the value to apply to
         :return: the result of the application
         """
-        return self(value)
+        return self._f(value)
 
 
 A1 = TypeVar('A1')
