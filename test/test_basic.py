@@ -14,5 +14,9 @@ def test_apply():
     assert 3 == add1 % 2
 
 
+def test_pipe():
+    assert 3 == 2 | add1
+
+
 def test_compose():
     assert 3 == add1 * add1 % 1

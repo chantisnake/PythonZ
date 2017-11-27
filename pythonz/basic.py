@@ -31,6 +31,13 @@ class PZFunc(Generic[A, B]):
         """
         return self._f(value)
 
+    def __ror__(self, value: A) -> B:
+        """The pipeline operator, like fsharp's "|>" and haskell's "&"
+
+        :param value: the value to apply this function
+        """
+        return self._f(value)
+
     def __mul__(self, other: 'PZFunc[C, A]') -> 'PZFunc[C, B]':
         """Function composition with PythonZ function, same as haskell's '.'
 
