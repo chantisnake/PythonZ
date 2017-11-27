@@ -38,6 +38,13 @@ class PZFunc(Generic[A, B]):
         """
         return self._f(value)
 
+    def __rand__(self, value: A) -> B:
+        """Alias for | (ror) pipeline operator
+
+        :param value: the input value to apply the function
+        """
+        return self.__ror__(value)
+
     def __mul__(self, other: 'PZFunc[C, A]') -> 'PZFunc[C, B]':
         """Function composition with PythonZ function, same as haskell's '.'
 
